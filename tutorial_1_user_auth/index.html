@@ -41,7 +41,7 @@
           document.getElementById('auth').innerHTML = data.authed
         }
       });
-      
+
       function getIdentity() {
         popup = window.open('https://yadacoin.io/identity#' + btoa(JSON.stringify({
           "method":"identity",
@@ -50,11 +50,13 @@
       }
 
       function getAuth() {
-        
+
         popup = window.open('https://yadacoin.io/identity?hi=1#' + btoa(JSON.stringify({
           "method":"signin",
           "origin": "*",
-          "message": challenge
+          "message": {
+            challenge: challenge
+          }
         })))
       }
     </script>
