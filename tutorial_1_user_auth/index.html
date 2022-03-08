@@ -3,21 +3,23 @@
     <script>
       let popup;
       let challenge;
+      let identity;
       window.addEventListener('message', async (event) => {
         console.log(event.data)
         if(event.data.method === 'identity') {
           popup.close()
+          identity = {
+            'public_key': event.data.identity.public_key,
+            'username': event.data.identity.username,
+            'username_signature': event.data.identity.username_signature
+          }
           const data = await (await fetch('https://yadacoin.io/challenge', {
               method: 'POST',
               cache: 'no-cache',
               headers: {
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({
-                'public_key': event.data.identity.public_key,
-                'username': event.data.identity.username,
-                'username_signature': event.data.identity.username_signature
-              })
+              body: JSON.stringify(identity)
             })
           ).json()
           document.getElementById('identity').innerHTML = event.data.identity.username
@@ -55,7 +57,8 @@
           "method":"signin",
           "origin": "*",
           "message": {
-            challenge: challenge
+            challenge: challenge,
+            identity: identity
           }
         })))
       }
