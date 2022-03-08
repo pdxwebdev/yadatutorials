@@ -11,10 +11,10 @@
         if(event.data.method === 'identity') {
           popup.close()
           if(!identity1) {
-            identity1 = event.data.identity
+            identity1 = event.data.result.identity
             document.getElementById('identity1').innerHTML = identity1.username
           } else if(!identity2) {
-            identity2 = event.data.identity
+            identity2 = event.data.result.identity
             document.getElementById('identity2').innerHTML = identity2.username
           }
         }
