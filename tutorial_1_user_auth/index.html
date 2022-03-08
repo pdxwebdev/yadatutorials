@@ -32,7 +32,7 @@
             },
             body: JSON.stringify({
               'username_signature': event.data.result.identity.username_signature,
-              'challenge_signature': event.data.signature
+              'challenge_signature': event.data.result.signature
             })
           })).json();
           console.log('Authed: ' + data.authed)
