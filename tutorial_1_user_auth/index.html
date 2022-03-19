@@ -43,7 +43,8 @@
       function getIdentity() {
         popup = window.open('https://yadacoin.io/identity#' + btoa(JSON.stringify({
           "method":"identity",
-          "origin": "*"
+          "origin": "*",
+          "portal": "window"
         })))
       }
 
@@ -52,6 +53,7 @@
         popup = window.open('https://yadacoin.io/identity?hi=1#' + btoa(JSON.stringify({
           "method":"signin",
           "origin": "*",
+          "portal": "window",
           "message": {
             challenge: challenge,
             identity: identity

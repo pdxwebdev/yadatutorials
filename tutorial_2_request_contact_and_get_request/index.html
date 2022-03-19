@@ -45,7 +45,8 @@
       function getIdentity() {
         popup = window.open('https://yadacoin.io/identity#' + btoa(JSON.stringify({
           "method":"identity",
-          "origin": "*"
+          "origin": "*",
+          "portal": "window"
         })))
       }
       // end overlap with tutorial 1
@@ -55,6 +56,7 @@
         popup = window.open('https://yadacoin.io/identity#' + btoa(JSON.stringify({
           method: 'addcontact',
           origin: '*',
+          portal: "window",
           message: {
             contact: identity2,
             identity: identity1
@@ -66,6 +68,7 @@
         popup = window.open('https://yadacoin.io/identity#' + btoa(JSON.stringify({
           method: 'getgraph',
           origin: '*',
+          portal: "window",
           message: {
             identity: identity2
           }
